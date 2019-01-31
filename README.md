@@ -5,8 +5,9 @@ Okex 官方没有oc的sdk，我从事oc这方面的工作，所以写了一份sd
 
 接入方法，将下面这行加入到您的podfile中
 
- pod 'OkexAPI', :git => 'git@github.com:zhtut/OkexAPI.git'
- pod 'ZTNetworkSDK', :git => 'git@github.com:zhtut/ZTNetworkSDK.git'
+pod 'OkexAPI', :git => 'git@github.com:zhtut/OkexAPI.git'
+
+pod 'ZTNetworkSDK', :git => 'git@github.com:zhtut/ZTNetworkSDK.git'
 
 注意：
 OkexAPI还依赖YYModel库，pod install后会自动安装
