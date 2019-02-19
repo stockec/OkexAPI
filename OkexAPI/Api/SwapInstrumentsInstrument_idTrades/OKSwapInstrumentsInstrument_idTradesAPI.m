@@ -17,12 +17,12 @@
     return params;
 }
 
-- (OKSwapInstrumentsInstrument_idTradesPO *)decodeParams:(NSDictionary *)response {
-    OKSwapInstrumentsInstrument_idTradesPO *model = [OKSwapInstrumentsInstrument_idTradesPO yy_modelWithDictionary:response];
+- (NSArray *)decodeParams:(NSDictionary *)response {
+    NSArray *model = [NSArray yy_modelArrayWithClass:[OKSwapInstrumentsInstrument_idTradesPO class] json:response];
     return model;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapInstrumentsInstrument_idTradesPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKSwapInstrumentsInstrument_idTradesPO *> *pos, NSError *error))completionHandler {
     NSDictionary *params = [self encodeParams];
     NSString *path = [NSString stringWithFormat:@"/api/swap/v3/instruments/%@/trades", self.ro.instrument_id];
     return [OKNetworkManager sendRequestWithPath:path

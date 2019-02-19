@@ -8,10 +8,10 @@
 
 
 #import <Foundation/Foundation.h>
+#import <YYModel/YYModel.h>
 
-@interface OKSwapInstrument_idPositionPO : NSObject
+@interface OKSwapInstrument_idPositionHoldingPO : NSObject
 
-@property(nonatomic,strong) NSString *margin_mode; // margin_mode    String    仓位模式:全仓crossed
 @property(nonatomic,strong) NSString *liquidation_price; // liquidation_price    String    预估爆仓价
 @property(nonatomic,strong) NSString *position; // position    String    持仓数量
 @property(nonatomic,strong) NSString *avail_position; // avail_position    String    可平数量
@@ -23,5 +23,12 @@
 @property(nonatomic,strong) NSString *realized_pnl; // realized_pnl    String    已实现盈亏
 @property(nonatomic,strong) NSString *side; // side    String    方向
 @property(nonatomic,strong) NSString *timestamp; // timestamp    String    最近一次加减仓的更新时间
+
+@end
+
+@interface OKSwapInstrument_idPositionPO : NSObject <YYModel>
+
+@property(nonatomic,strong) NSString *margin_mode; // margin_mode    String    仓位模式:全仓crossed
+@property(nonatomic,strong) NSArray *holding; // margin_mode    String    仓位模式:全仓crossed
 
 @end

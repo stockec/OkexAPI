@@ -24,7 +24,7 @@
 
 - (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapCancel_orderInstrument_idOrder_idPO *po, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams];
-    NSString *path = [NSString stringWithFormat:@"/api/swap/v3/cancel_order/<instrument_id>/%@", self.ro.order_id];
+    NSString *path = [NSString stringWithFormat:@"/api/swap/v3/cancel_order/%@/%@", self.ro.instrument_id, self.ro.order_id];
     return [OKNetworkManager sendRequestWithPath:path
                                           params:params 
                                       HTTPMethod:@"POST" 

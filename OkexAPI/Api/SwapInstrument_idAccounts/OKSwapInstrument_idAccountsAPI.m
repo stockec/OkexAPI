@@ -18,7 +18,8 @@
 }
 
 - (OKSwapInstrument_idAccountsPO *)decodeParams:(NSDictionary *)response {
-    OKSwapInstrument_idAccountsPO *model = [OKSwapInstrument_idAccountsPO yy_modelWithDictionary:response];
+    NSDictionary *dic = [response objectForKey:@"info"];
+    OKSwapInstrument_idAccountsPO *model = [OKSwapInstrument_idAccountsPO yy_modelWithDictionary:dic];
     return model;
 }
 
@@ -34,7 +35,7 @@
                                            completionHandler(nil, error); 
                                        } 
                                    } else { 
-                                       if (completionHandler) { 
+                                       if (completionHandler) {
                                            completionHandler([self decodeParams:responseDic], nil); 
                                        } 
                                    } 

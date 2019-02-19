@@ -7,24 +7,34 @@
 //
 
 #import "OKNetworkManager.h"
-#import <SCNetworkSDK/SCNetworkSDK.h>
+#import <ZTNetworkSDK/ZTNetworkSDK.h>
 #import "NSString+SHA256.h"
 #import "NSDate+String.h"
 
-#define apiKey @""
-#define secretKey @""
-#define Passphrase @""
+NSString *__OKEX_API_Key = nil;
+NSString *__OKEX_Secret_Key = nil;
+NSString *__OKEX_Passphrase = nil;
 
 static NSString *const VCNetworkBaseURL =  @"https://www.okex.com";
 
 @implementation OKNetworkManager
+
++ (void)setAPIKey:(NSString *)apiKey {
+    __OKEX_API_Key = apiKey;
+}
++ (void)setSecretKey:(NSString *)secretKey {
+    __OKEX_Secret_Key = secretKey;
+}
++ (void)setPassphrase:(NSString *)passphrase {
+    __OKEX_Passphrase = passphrase;
+}
 
 NSString * GetSign(NSString * timestamp, NSString * method, NSString * requestPath, NSString * body) {
     NSString *data = [NSString stringWithFormat:@"%@%@%@", timestamp, method, requestPath];
     if (body.length) {
         data = [data stringByAppendingString:body];
     }
-    NSString *key = secretKey;
+    NSString *key = __OKEX_Secret_Key;
     NSString *base64String = [data hmacBase64StringWithKey:key];
     return base64String;
 }
@@ -61,9 +71,9 @@ NSString * GetSign(NSString * timestamp, NSString * method, NSString * requestPa
     
     // headers
     NSMutableDictionary *headerFields = [NSMutableDictionary dictionary];
-    [headerFields setObject:apiKey forKey:@"OK-ACCESS-KEY"];
+    [headerFields setObject:__OKEX_API_Key forKey:@"OK-ACCESS-KEY"];
     [headerFields setObject:timestamp forKey:@"OK-ACCESS-TIMESTAMP"];
-    [headerFields setObject:Passphrase forKey:@"OK-ACCESS-PASSPHRASE"];
+    [headerFields setObject:__OKEX_Passphrase forKey:@"OK-ACCESS-PASSPHRASE"];
     [headerFields setObject:@"application/json; charset=UTF-8" forKey:@"Content-Type"];
     [headerFields setObject:@"application/json" forKey:@"Accept"];
     
@@ -74,15 +84,15 @@ NSString * GetSign(NSString * timestamp, NSString * method, NSString * requestPa
     }
     NSString *sign = GetSign(timestamp, HTTPMethod, path, bodyString);
     [headerFields setObject:sign forKey:@"OK-ACCESS-SIGN"];
-    NSURLSessionTask *task = [[SCNSession sharedSession] sendRequestWithURLString:fullURL
+    NSURLSessionTask *task = [[NWSession sharedSession] sendRequestWithURLString:fullURL
                                                                            params:params
-                                                                      cachePolicy:(SCNSessionReloadIgnoringLocalCacheData)
+                                                                      cachePolicy:(NWSessionReloadIgnoringLocalCacheData)
                                                                   timeoutInterval:10
                                                                        HTTPMethod:HTTPMethod
                                                                  HTTPHeaderFields:headerFields
                                                                 completionHandler:^(NSDictionary *responseDic, NSError *error) {
-                                                                    //                                                                    NSString *string = [NSString stringWithFormat:@"\n请求URL:%@ \n参数：%@, \nheader:%@ \n返回值：%@", fullURL, params, headerFields, responseDic ?: error];
-                                                                    //                                                                    NSLog(@"%@", string);
+                                                                                                                                        NSString *string = [NSString stringWithFormat:@"\n请求URL:%@ \n参数：%@, \nheader:%@ \n返回值：%@", fullURL, params, headerFields, responseDic ?: error];
+                                                                                                                                        NSLog(@"%@", string);
                                                                     if (completionHandler) {
                                                                         completionHandler(responseDic, error);
                                                                     }

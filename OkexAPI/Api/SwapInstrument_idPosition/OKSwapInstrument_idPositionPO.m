@@ -9,6 +9,15 @@
 
 #import "OKSwapInstrument_idPositionPO.h"
 
+@implementation OKSwapInstrument_idPositionHoldingPO
+
+
+@end
+
 @implementation OKSwapInstrument_idPositionPO
+
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
+    return @{@"holding": [OKSwapInstrument_idPositionHoldingPO class]};
+}
 
 @end

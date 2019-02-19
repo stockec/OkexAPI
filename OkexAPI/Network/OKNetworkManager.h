@@ -12,6 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OKNetworkManager : NSObject
 
++ (void)setAPIKey:(NSString *)apiKey;
++ (void)setSecretKey:(NSString *)secretKey;
++ (void)setPassphrase:(NSString *)passphrase;
+
 + (NSURLSessionTask *)sendRequestWithPath:(NSString *)path
                                    params:(nullable id)params
                                HTTPMethod:(NSString *)HTTPMethod

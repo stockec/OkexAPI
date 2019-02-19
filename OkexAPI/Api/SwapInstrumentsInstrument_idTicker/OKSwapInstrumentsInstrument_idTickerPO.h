@@ -12,6 +12,8 @@
 @interface OKSwapInstrumentsInstrument_idTickerPO : NSObject
 
 @property(nonatomic,strong) NSString *last; // last    String    最新成交价
+@property(nonatomic,strong) NSString *best_bid; // high_24h    String    买一价
+@property(nonatomic,strong) NSString *best_ask; // low_24h    String    卖一价
 @property(nonatomic,strong) NSString *high_24h; // high_24h    String    24小时最高价
 @property(nonatomic,strong) NSString *low_24h; // low_24h    String    24小时最低价
 @property(nonatomic,strong) NSString *volume_24h; // volume_24h    String    24小时成交量
