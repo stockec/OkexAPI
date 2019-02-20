@@ -38,7 +38,7 @@
                                            NSString *code = [responseDic objectForKey:@"code"];
                                            NSString *message = [responseDic objectForKey:@"message"];
                                            if (code && message) {
-                                               NSError *error = [NSError errorWithDomain:@"serverDomin" code:code.integerValue userInfo:@{NSLocalizedDescriptionKey: message}];
+                                               NSError *error = [NSError errorWithDomain:@"OkexServerDomin" code:code.integerValue userInfo:@{NSLocalizedDescriptionKey: message}];
                                                completionHandler(nil, error);
                                                return ;
                                            }
