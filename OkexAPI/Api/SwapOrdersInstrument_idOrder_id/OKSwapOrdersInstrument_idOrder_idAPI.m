@@ -24,7 +24,7 @@
 
 - (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapOrdersInstrument_idOrder_idPO *po, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams];
-    NSString *path = [NSString stringWithFormat:@"/api/swap/v3/orders/<instrument_id>/%@", self.ro.order_id];
+    NSString *path = [NSString stringWithFormat:@"/api/swap/v3/orders/%@/%@", self.ro.instrument_id, self.ro.order_id];
     return [OKNetworkManager sendRequestWithPath:path
                                           params:params 
                                       HTTPMethod:@"GET" 
@@ -34,7 +34,14 @@
                                            completionHandler(nil, error); 
                                        } 
                                    } else { 
-                                       if (completionHandler) { 
+                                       if (completionHandler) {
+                                           NSString *code = [responseDic objectForKey:@"code"];
+                                           NSString *message = [responseDic objectForKey:@"message"];
+                                           if (code && message) {
+                                               NSError *error = [NSError errorWithDomain:@"serverDomin" code:code.integerValue userInfo:@{NSLocalizedDescriptionKey: message}];
+                                               completionHandler(nil, error);
+                                               return ;
+                                           }
                                            completionHandler([self decodeParams:responseDic], nil); 
                                        } 
                                    } 
