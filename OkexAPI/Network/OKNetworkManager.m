@@ -14,6 +14,7 @@
 NSString *__OKEX_API_Key = nil;
 NSString *__OKEX_Secret_Key = nil;
 NSString *__OKEX_Passphrase = nil;
+BOOL __OKEX_Show_Log = YES;
 
 static NSString *const VCNetworkBaseURL =  @"https://www.okex.com";
 
@@ -27,6 +28,9 @@ static NSString *const VCNetworkBaseURL =  @"https://www.okex.com";
 }
 + (void)setPassphrase:(NSString *)passphrase {
     __OKEX_Passphrase = passphrase;
+}
++ (void)setShowLog:(BOOL)showLog {
+    __OKEX_Show_Log = showLog;
 }
 
 NSString * GetSign(NSString * timestamp, NSString * method, NSString * requestPath, NSString * body) {
@@ -91,8 +95,10 @@ NSString * GetSign(NSString * timestamp, NSString * method, NSString * requestPa
                                                                        HTTPMethod:HTTPMethod
                                                                  HTTPHeaderFields:headerFields
                                                                 completionHandler:^(NSDictionary *responseDic, NSError *error) {
-                                                                                                                                        NSString *string = [NSString stringWithFormat:@"\n请求URL:%@ \n参数：%@, \nheader:%@ \n返回值：%@", fullURL, params, headerFields, responseDic ?: error];
-                                                                                                                                        NSLog(@"%@", string);
+                                                                    if (__OKEX_Show_Log) {
+                                                                        NSString *string = [NSString stringWithFormat:@"\n请求URL:%@ \n参数：%@, \nheader:%@ \n返回值：%@", fullURL, params, headerFields, responseDic ?: error];
+                                                                        NSLog(@"%@", string);
+                                                                    }
                                                                     if (completionHandler) {
                                                                         completionHandler(responseDic, error);
                                                                     }

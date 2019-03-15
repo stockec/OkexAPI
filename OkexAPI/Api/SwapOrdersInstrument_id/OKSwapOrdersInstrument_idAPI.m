@@ -17,12 +17,13 @@
     return params;
 }
 
-- (OKSwapOrdersInstrument_idPO *)decodeParams:(NSDictionary *)response {
-    OKSwapOrdersInstrument_idPO *model = [OKSwapOrdersInstrument_idPO yy_modelWithDictionary:response];
+- (NSArray *)decodeParams:(NSDictionary *)response {
+    NSArray *array = [response objectForKey:@"order_info"];
+    NSArray *model = [NSArray yy_modelArrayWithClass:[OKSwapOrdersInstrument_idPO class] json:array];
     return model;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapOrdersInstrument_idPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray *pos, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams];
     NSString *path = [NSString stringWithFormat:@"/api/swap/v3/orders/%@", self.ro.instrument_id];
     return [OKNetworkManager sendRequestWithPath:path

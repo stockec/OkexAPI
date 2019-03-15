@@ -15,6 +15,6 @@
 
 @property(nonatomic,strong) OKSwapOrdersInstrument_idRO *ro;
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapOrdersInstrument_idPO *po, NSError *error))completionHandler;
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray *pos, NSError *error))completionHandler;
 
 @end

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 + (void)setAPIKey:(NSString *)apiKey;
 + (void)setSecretKey:(NSString *)secretKey;
 + (void)setPassphrase:(NSString *)passphrase;
++ (void)setShowLog:(BOOL)showLog;
 
 + (NSURLSessionTask *)sendRequestWithPath:(NSString *)path
                                    params:(nullable id)params
