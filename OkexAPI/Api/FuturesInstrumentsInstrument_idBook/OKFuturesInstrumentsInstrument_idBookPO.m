@@ -9,6 +9,18 @@
 
 #import "OKFuturesInstrumentsInstrument_idBookPO.h"
 
+@implementation OKFuturesInstrumentsInstrument_idBookDepthPO
+
+
+@end
+
 @implementation OKFuturesInstrumentsInstrument_idBookPO
+
++ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
+    return @{
+        @"asks": [OKFuturesInstrumentsInstrument_idBookDepthPO class],
+        @"bids": [OKFuturesInstrumentsInstrument_idBookDepthPO class],
+    };
+}
 
 @end

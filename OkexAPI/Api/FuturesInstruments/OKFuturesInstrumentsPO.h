@@ -19,5 +19,6 @@
 @property(nonatomic,strong) NSString *delivery; // delivery    String    交割日期
 @property(nonatomic,strong) NSString *tick_size; // tick_size    Double    下单价格精度
 @property(nonatomic,strong) NSString *trade_increment; // trade_increment    Int    下单数量精度
+@property(nonatomic,strong) NSString *alias; // trade_increment    Int    下单数量精度
 
 @end

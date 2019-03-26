@@ -17,12 +17,13 @@
     return params;
 }
 
-- (OKFuturesOrdersInstrument_idPO *)decodeParams:(NSDictionary *)response {
-    OKFuturesOrdersInstrument_idPO *model = [OKFuturesOrdersInstrument_idPO yy_modelWithDictionary:response];
+- (NSArray *)decodeParams:(NSDictionary *)response {
+    response = [response objectForKey:@"order_info"];
+    NSArray *model = [NSArray yy_modelArrayWithClass:[OKFuturesOrdersInstrument_idPO class] json:response];
     return model;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKFuturesOrdersInstrument_idPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKFuturesOrdersInstrument_idPO*> *pos, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams];
     NSString *path = [NSString stringWithFormat:@"/api/futures/v3/orders/%@", self.ro.instrument_id];
     return [OKNetworkManager sendRequestWithPath:path

@@ -15,6 +15,6 @@
 
 @property(nonatomic,strong) OKFuturesOrdersInstrument_idRO *ro;
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKFuturesOrdersInstrument_idPO *po, NSError *error))completionHandler;
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKFuturesOrdersInstrument_idPO*> *pos, NSError *error))completionHandler;
 
 @end

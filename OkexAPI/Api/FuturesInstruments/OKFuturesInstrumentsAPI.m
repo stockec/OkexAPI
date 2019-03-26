@@ -17,12 +17,12 @@
     return params;
 }
 
-- (OKFuturesInstrumentsPO *)decodeParams:(NSDictionary *)response {
-    OKFuturesInstrumentsPO *model = [OKFuturesInstrumentsPO yy_modelWithDictionary:response];
+- (NSArray *)decodeParams:(NSDictionary *)response {
+    NSArray *model = [NSArray yy_modelArrayWithClass:[OKFuturesInstrumentsPO class] json:response];
     return model;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKFuturesInstrumentsPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKFuturesInstrumentsPO*> *po, NSError *error))completionHandler {
     NSDictionary *params = [self encodeParams]; 
     NSString *path = @"/api/futures/v3/instruments"; 
     return [OKNetworkManager sendRequestWithPath:path 

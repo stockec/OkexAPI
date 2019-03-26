@@ -9,6 +9,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OKFuturesInstrumentsInstrument_idBookPO : NSObject
+@interface OKFuturesInstrumentsInstrument_idBookDepthPO : NSObject
+
+@property(nonatomic,strong) NSString *price;
+@property(nonatomic,strong) NSNumber *size;
+
+@end
+
+@interface OKFuturesInstrumentsInstrument_idBookPO : NSObject <YYModel>
+
+@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *asks;
+@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *bids;
 
 @end
