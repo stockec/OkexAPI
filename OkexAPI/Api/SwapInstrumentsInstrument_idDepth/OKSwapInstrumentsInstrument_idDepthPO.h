@@ -16,12 +16,12 @@
 
 @end
 
-@interface OKSwapInstrumentsInstrument_idDepthPO : NSObject<YYModel>
+@interface OKSwapInstrumentsInstrument_idDepthPO : NSObject
 
 @property(nonatomic,strong) NSArray *asks;
 @property(nonatomic,strong) NSArray *bids;
 
-@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *askPOs;
-@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *bidPOs;
+@property(nonatomic,strong) NSArray<OKSwapInstrumentsInstrument_idDepthItemPO *> *askPOs;
+@property(nonatomic,strong) NSArray<OKSwapInstrumentsInstrument_idDepthItemPO *> *bidPOs;
 
 @end

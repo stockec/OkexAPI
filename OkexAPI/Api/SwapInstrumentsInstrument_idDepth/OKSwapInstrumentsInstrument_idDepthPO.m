@@ -16,11 +16,11 @@
 
 @implementation OKSwapInstrumentsInstrument_idDepthPO
 
-- (NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *)bidPOs {
+- (NSArray<OKSwapInstrumentsInstrument_idDepthItemPO *> *)bidPOs {
     NSMutableArray *askPos = [NSMutableArray array];
     for (NSArray *arr in _bids) {
         NSString *price = [arr firstObject];
-        NSString *size = [arr objectAtIndex:1];
+        NSNumber *size = [arr objectAtIndex:1];
         OKSwapInstrumentsInstrument_idDepthItemPO *po = [OKSwapInstrumentsInstrument_idDepthItemPO new];
         po.price = price;
         po.size = size;
@@ -29,11 +29,11 @@
     return askPos;
 }
 
-- (NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *)askPOs {
+- (NSArray<OKSwapInstrumentsInstrument_idDepthItemPO *> *)askPOs {
     NSMutableArray *askPos = [NSMutableArray array];
     for (NSArray *arr in _asks) {
         NSString *price = [arr firstObject];
-        NSString *size = [arr objectAtIndex:1];
+        NSNumber *size = [arr objectAtIndex:1];
         OKSwapInstrumentsInstrument_idDepthItemPO *po = [OKSwapInstrumentsInstrument_idDepthItemPO new];
         po.price = price;
         po.size = size;
