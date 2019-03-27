@@ -9,10 +9,19 @@
 
 #import <Foundation/Foundation.h>
 
-@interface OKSwapInstrumentsInstrument_idDepthPO : NSObject
+@interface OKSwapInstrumentsInstrument_idDepthItemPO : NSObject
 
-@property(nonatomic,strong) NSString *asks; // asks    String    卖方深度
-@property(nonatomic,strong) NSString *bids; // bids    String    买方深度
-@property(nonatomic,strong) NSString *timestamp; // timestamp    String    系统时间戳
+@property(nonatomic,strong) NSString *price;
+@property(nonatomic,strong) NSNumber *size;
+
+@end
+
+@interface OKSwapInstrumentsInstrument_idDepthPO : NSObject<YYModel>
+
+@property(nonatomic,strong) NSArray *asks;
+@property(nonatomic,strong) NSArray *bids;
+
+@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *askPOs;
+@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *bidPOs;
 
 @end

@@ -18,7 +18,10 @@
 
 @interface OKFuturesInstrumentsInstrument_idBookPO : NSObject <YYModel>
 
-@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *asks;
-@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *bids;
+@property(nonatomic,strong) NSArray *asks;
+@property(nonatomic,strong) NSArray *bids;
+
+@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *askPOs;
+@property(nonatomic,strong) NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *bidPOs;
 
 @end

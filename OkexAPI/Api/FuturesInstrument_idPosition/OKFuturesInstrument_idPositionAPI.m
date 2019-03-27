@@ -17,12 +17,13 @@
     return params;
 }
 
-- (OKFuturesInstrument_idPositionPO *)decodeParams:(NSDictionary *)response {
-    OKFuturesInstrument_idPositionPO *model = [OKFuturesInstrument_idPositionPO yy_modelWithDictionary:response];
+- (NSArray *)decodeParams:(NSDictionary *)response {
+    response = [response objectForKey:@"holding"];
+    NSArray *model = [NSArray yy_modelArrayWithClass:[OKFuturesInstrument_idPositionPO class] json:response];
     return model;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKFuturesInstrument_idPositionPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKFuturesInstrument_idPositionPO *> *pos, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams];
     NSString *path = [NSString stringWithFormat:@"/api/futures/v3/%@/position", self.ro.instrument_id];
     return [OKNetworkManager sendRequestWithPath:path

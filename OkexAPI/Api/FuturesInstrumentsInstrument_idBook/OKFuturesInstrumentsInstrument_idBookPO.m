@@ -16,11 +16,30 @@
 
 @implementation OKFuturesInstrumentsInstrument_idBookPO
 
-+ (NSDictionary<NSString *,id> *)modelContainerPropertyGenericClass {
-    return @{
-        @"asks": [OKFuturesInstrumentsInstrument_idBookDepthPO class],
-        @"bids": [OKFuturesInstrumentsInstrument_idBookDepthPO class],
-    };
+- (NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *)bidPOs {
+    NSMutableArray *askPos = [NSMutableArray array];
+    for (NSArray *arr in _bids) {
+        NSString *price = [arr firstObject];
+        NSString *size = [arr objectAtIndex:1];
+        OKFuturesInstrumentsInstrument_idBookDepthPO *po = [OKFuturesInstrumentsInstrument_idBookDepthPO new];
+        po.price = price;
+        po.size = size;
+        [askPos addObject:po];
+    }
+    return askPos;
+}
+
+- (NSArray<OKFuturesInstrumentsInstrument_idBookDepthPO *> *)askPOs {
+    NSMutableArray *askPos = [NSMutableArray array];
+    for (NSArray *arr in _asks) {
+        NSString *price = [arr firstObject];
+        NSString *size = [arr objectAtIndex:1];
+        OKFuturesInstrumentsInstrument_idBookDepthPO *po = [OKFuturesInstrumentsInstrument_idBookDepthPO new];
+        po.price = price;
+        po.size = size;
+        [askPos addObject:po];
+    }
+    return askPos;
 }
 
 @end
