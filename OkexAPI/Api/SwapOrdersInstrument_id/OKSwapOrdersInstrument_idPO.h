@@ -12,6 +12,7 @@
 @interface OKSwapOrdersInstrument_idPO : NSObject
 
 @property(nonatomic,strong) NSString *instrument_id; // instrument_id    String    合约名称，如BTC-USD-SWAP
+@property(nonatomic,strong) NSString *client_oid; // instrument_id    String    合约名称，如BTC-USD-SWAP
 @property(nonatomic,strong) NSString *size; // size    String    委托数量
 @property(nonatomic,strong) NSString *timestamp; // timestamp    String    创建时间
 @property(nonatomic,strong) NSString *filled_qty; // filled_qty    String    成交数量
