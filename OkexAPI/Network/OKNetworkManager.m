@@ -91,7 +91,7 @@ NSString * GetSign(NSString * timestamp, NSString * method, NSString * requestPa
     NSURLSessionTask *task = [[NWSession sharedSession] sendRequestWithURLString:fullURL
                                                                            params:params
                                                                       cachePolicy:(NWSessionReloadIgnoringLocalCacheData)
-                                                                  timeoutInterval:10
+                                                                  timeoutInterval:5
                                                                        HTTPMethod:HTTPMethod
                                                                  HTTPHeaderFields:headerFields
                                                                 completionHandler:^(NSDictionary *responseDic, NSError *error) {
