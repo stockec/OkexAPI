@@ -9,6 +9,7 @@
 
 #import "OKSwapInstrumentsInstrument_idCandlesAPI.h"
 #import "OKNetworkManager.h"
+#import "NSArray+Index.h"
 
 @implementation OKSwapInstrumentsInstrument_idCandlesAPI
 
@@ -17,12 +18,30 @@
     return params;
 }
 
-- (OKSwapInstrumentsInstrument_idCandlesPO *)decodeParams:(NSDictionary *)response {
-    OKSwapInstrumentsInstrument_idCandlesPO *model = [OKSwapInstrumentsInstrument_idCandlesPO yy_modelWithDictionary:response];
-    return model;
+- (NSArray *)decodeParams:(NSArray *)response {
+    if ([response isKindOfClass:[NSArray class]]) {
+        NSMutableArray *models = [NSMutableArray array];
+        for (NSArray *arr in response) {
+            if (arr.count == 0) {
+                continue;
+            }
+            OKSwapInstrumentsInstrument_idCandlesPO *model = [OKSwapInstrumentsInstrument_idCandlesPO new];
+            NSString *first = [arr firstObject];
+            model.timestamp = first;
+            model.open = [arr objAtIndex:1];
+            model.high = [arr objAtIndex:2];
+            model.low = [arr objAtIndex:3];
+            model.close = [arr objAtIndex:4];
+            model.volume = [arr objAtIndex:5];
+            model.currency_volume = [arr objAtIndex:6];
+            [models addObject:model];
+        }
+        return models;
+    }
+    return nil;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapInstrumentsInstrument_idCandlesPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKSwapInstrumentsInstrument_idCandlesPO *> *pos, NSError *error))completionHandler {
     NSDictionary *params = [self encodeParams];
     NSString *path = [NSString stringWithFormat:@"/api/swap/v3/instruments/%@/candles", self.ro.instrument_id];
     return [OKNetworkManager sendRequestWithPath:path
@@ -35,7 +54,7 @@
                                        } 
                                    } else { 
                                        if (completionHandler) { 
-                                           completionHandler([self decodeParams:responseDic], nil); 
+                                           completionHandler([self decodeParams:(NSArray *)responseDic], nil); 
                                        } 
                                    } 
                                }]; 

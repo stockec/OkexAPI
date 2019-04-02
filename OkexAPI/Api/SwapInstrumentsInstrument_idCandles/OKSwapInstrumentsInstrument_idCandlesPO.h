@@ -19,4 +19,8 @@
 @property(nonatomic,strong) NSString *volume; // volume    String    交易量(按张折算)
 @property(nonatomic,strong) NSString *currency_volume; // currency_volume    String    交易量（按币折算）
 
+@property(nonatomic,readonly) double maxPoint; // 顶点，不管涨跌
+@property(nonatomic,readonly) double minPoint; // 低点，不管涨跌
+@property(nonatomic,readonly) double percent; // 涨跌百分比
+
 @end

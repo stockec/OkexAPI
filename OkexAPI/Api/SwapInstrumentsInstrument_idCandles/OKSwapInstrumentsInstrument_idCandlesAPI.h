@@ -15,6 +15,6 @@
 
 @property(nonatomic,strong) OKSwapInstrumentsInstrument_idCandlesRO *ro;
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSwapInstrumentsInstrument_idCandlesPO *po, NSError *error))completionHandler;
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKSwapInstrumentsInstrument_idCandlesPO *> *pos, NSError *error))completionHandler;
 
 @end

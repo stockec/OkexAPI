@@ -11,4 +11,16 @@
 
 @implementation OKSwapInstrumentsInstrument_idCandlesPO
 
+- (double)maxPoint {
+    return MAX(self.close.doubleValue, self.open.doubleValue);
+}
+
+- (double)minPoint {
+    return MIN(self.close.doubleValue, self.open.doubleValue);
+}
+
+- (double)percent {
+    return ((self.close.doubleValue - self.open.doubleValue) / self.open.doubleValue) * 100.0;
+}
+
 @end
