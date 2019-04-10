@@ -24,7 +24,7 @@
 
 - (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSpotInstrumentsInstrumentidTickerPO *po, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams];
-    NSString *path = [NSString stringWithFormat:@"/api/spot/v3/instruments/%@/ticker", self.ro.instrumentid];
+    NSString *path = [NSString stringWithFormat:@"/api/spot/v3/instruments/%@/ticker", self.ro.instrument_id];
     return [OKNetworkManager sendRequestWithPath:path
                                           params:params 
                                       HTTPMethod:@"GET" 

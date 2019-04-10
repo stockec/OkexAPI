@@ -12,6 +12,5 @@
 @interface OKSpotInstrumentsInstrumentidTickerRO : NSObject
 
 @property(nonatomic,strong) NSString *instrument_id; // instrument_id    string    [必填]币对
-@property(nonatomic,strong) NSString *instrumentid;
 
 @end
