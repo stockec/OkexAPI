@@ -17,12 +17,12 @@
     return params;
 }
 
-- (OKSpotOrders_pendingPO *)decodeParams:(NSDictionary *)response {
-    OKSpotOrders_pendingPO *model = [OKSpotOrders_pendingPO yy_modelWithDictionary:response];
+- (NSArray *)decodeParams:(NSDictionary *)response {
+    NSArray *model = [NSArray yy_modelArrayWithClass:[OKSpotOrders_pendingPO class] json:response];
     return model;
 }
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSpotOrders_pendingPO *po, NSError *error))completionHandler; {
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKSpotOrders_pendingPO*> *pos, NSError *error))completionHandler; {
     NSDictionary *params = [self encodeParams]; 
     NSString *path = @"/api/spot/v3/orders_pending"; 
     return [OKNetworkManager sendRequestWithPath:path 

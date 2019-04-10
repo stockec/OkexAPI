@@ -15,6 +15,6 @@
 
 @property(nonatomic,strong) OKSpotOrders_pendingRO *ro;
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSpotOrders_pendingPO *po, NSError *error))completionHandler;
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKSpotOrders_pendingPO*> *pos, NSError *error))completionHandler;
 
 @end

@@ -97,6 +97,7 @@
 #import "OKSpotCancel_ordersOrder_idAPI.h"
 #import "OKSpotBatch_ordersAPI.h"
 #import "OKSpotOrdersAPI.h"
+#import "OKPostSpotOrdersAPI.h"
 #import "OKSpotAccountsCurrencyLedgerAPI.h"
 #import "OKSpotAccountsCurrencyAPI.h"
 #import "OKSpotAccountsAPI.h"

@@ -15,6 +15,6 @@
 
 @property(nonatomic,strong) OKSpotInstrumentsInstrument_idTradesRO *ro;
 
-- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(OKSpotInstrumentsInstrument_idTradesPO *po, NSError *error))completionHandler;
+- (NSURLSessionTask *)sendRequestWithCompletionHandler:(void(^)(NSArray<OKSpotInstrumentsInstrument_idTradesPO *> *pos, NSError *error))completionHandler;
 
 @end
