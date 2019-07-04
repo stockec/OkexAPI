@@ -23,6 +23,8 @@
 @property(nonatomic,strong) NSString *realized_pnl; // realized_pnl    String    已实现盈亏
 @property(nonatomic,strong) NSString *side; // side    String    方向
 @property(nonatomic,strong) NSString *timestamp; // timestamp    String    最近一次加减仓的更新时间
+@property(nonatomic,strong) NSString *maint_margin_ratio; // timestamp    String    最近一次加减仓的更新时间
+
 
 @end
 
